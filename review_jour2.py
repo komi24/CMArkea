@@ -78,8 +78,15 @@ class Board:
     """
     Faire une methode move_left qui fait tous les pompiers bouger d'une unité sur la gauche
     """
+    def move_left(self):
+        for firefighter in self.firefighter_list:
+            firefighter.move_left()
+
     def __repr__(self):
         return str(self.firefighter_list)
 
 board = Board()
 print(board)
+board.move_left()
+print(board)
+
