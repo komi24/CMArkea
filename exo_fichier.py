@@ -1,5 +1,6 @@
 import yaml
 
+
 def build_config(n, host, ip_suffix, environment, service):
     for i in range(1, n+1):
         yield {
