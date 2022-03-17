@@ -1,4 +1,6 @@
 # dataclasses
+# from functools import total_ordering
+
 
 class Maison:
     """

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Ma Page Arkea</title>
+{% endblock %}
+
+
+{% block content %}
+    {% if firstname %}
+        <h1>Bienvenue {{firstname}} {{lastname}}!</h1>
+    {% else %}
+        <h1>Bienvenue sur mon site!</h1>
+    {% endif %}
+    <h2>Il ne sert à rien pour l'instant</h2>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a
+        type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of
+        Lorem Ipsum.</p>
+
+    <div class="row">
+        <form class="col s12" method="post" action="/form">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Placeholder" id="first_name" type="text" name="prenom" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" name="nom">
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" name="password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" name="email">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <button class="btn" type="submit">Valider</button>
+        </form>
+    </div>
+{% endblock %}

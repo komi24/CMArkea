@@ -86,7 +86,6 @@ class Node:
             f"services : {self.service_list}"
 
 
-
 class Cluster:
     """
     attrs:
@@ -151,3 +150,4 @@ print(node2)
 #
 #
 # liste_configs = [conf for conf in build_all_configs(10)]
+
