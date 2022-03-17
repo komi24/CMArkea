@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Login Arkea</title>
+{% endblock %}
+
+
+{% block content %}
+    <h1>Connexion</h1>
+    <div class="row">
+        <form class="col s12" method="post" action="/auth/login">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" name="email">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" name="password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <button class="btn" type="submit">Valider</button>
+        </form>
+    </div>
+{% endblock %}

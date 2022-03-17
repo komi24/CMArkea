@@ -2,17 +2,22 @@ from flask import Flask, render_template, request
 from models import db
 from models.user import User
 from api.routes import api_routes
+from auth.routes import auth_routes
+from auth import login_manager
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "mon_secret"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///arkea.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.register_blueprint(api_routes)
+app.register_blueprint(auth_routes)
 
 with app.app_context():
     db.init_app(app)
     db.create_all()
+    login_manager.init_app(app)
 
 
 @app.route("/")
@@ -27,6 +32,12 @@ def contact():
         {"name": "Service RH", "horaires": "Ouvert du Lundi au Vendredi de 10h à 16h"},
     ]
     return render_template("contact.html", contact_list=contact_list)
+
+
+@app.route("/users")
+def user_list():
+    users = User.query.all()
+    return render_template("users.html", users=users)
 
 
 @app.route("/form", methods=["POST"])
