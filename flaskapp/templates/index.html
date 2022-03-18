@@ -6,12 +6,14 @@
 
 
 {% block content %}
-    {% if firstname %}
+    {% if current_user.is_authenticated %}
+        <h1>Bienvenue {{current_user.firstname}} {{current_user.lastname}}!</h1>
+    {% elif firstname %}
         <h1>Bienvenue {{firstname}} {{lastname}}!</h1>
     {% else %}
         <h1>Bienvenue sur mon site!</h1>
     {% endif %}
-    <h2>Il ne sert à rien pour l'instant</h2>
+    <h2>Il ne sert à rien pour l'instant ok {{session.interest}}</h2>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
         standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
         a

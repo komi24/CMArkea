@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect
 from models.user import User
 from models import db
 from auth import flask_bcrypt, login_manager
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 
 auth_routes = Blueprint(name="auth", import_name=__name__, url_prefix="/auth")
@@ -10,6 +10,18 @@ auth_routes = Blueprint(name="auth", import_name=__name__, url_prefix="/auth")
 
 @auth_routes.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Login page
+    ---
+    parameters:
+      - name: email
+        type: string
+        required: true
+      - name: password
+        type: string
+        required: true
+    :return:
+    """
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
@@ -43,6 +55,12 @@ def signup():
         return redirect("/")
 
     return render_template("signup.html")
+
+
+@auth_routes.route("/logout")
+def logout():
+    logout_user()
+    return redirect("/")
 
 
 @login_manager.unauthorized_handler
