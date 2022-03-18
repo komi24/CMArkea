@@ -7,6 +7,9 @@
 
 {% block content %}
     <h1>Connexion</h1>
+    {% if error_message %}
+        <div class="card-panel error">{{error_message}}</div>
+    {% endif %}
     <div class="row">
         <form class="col s12" method="post" action="/auth/login">
             <div class="row">

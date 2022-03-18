@@ -1,3 +1,4 @@
+import flask_login
 from flask import Flask, render_template, request
 from models import db
 from models.user import User
@@ -35,6 +36,7 @@ def contact():
 
 
 @app.route("/users")
+@flask_login.login_required
 def user_list():
     users = User.query.all()
     return render_template("users.html", users=users)

@@ -1,8 +1,9 @@
+import flask_login
 from models import db
 from auth import login_manager
 
 
-class User(db.Model):
+class User(db.Model, flask_login.UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String())
     lastname = db.Column(db.String())
